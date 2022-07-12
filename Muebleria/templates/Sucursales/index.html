@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block titulo %} Sucursales {%endblock%}
+
+{% block contenido %} 
+
+<div class="container">
+    <div class="row">
+        <div class= "div.col-md-12 search">
+            <form method="get">
+                <div id="custom-search-input">
+                    <input type="text" class="form-control" placeholder="Buscar..." name="buscar">
+                    <span class="input-group-list">
+                      <i class="icon iconsearch"></i>  
+                      <button type="submit" class="boton btn success"></button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'agregarsucursal' %}" role="button">Agregar Sucursal</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Sucursales</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Direccion</th>
+                    <th>Empleados</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for sucursal in Sucursals %}
+                <tr>
+                    <td >{{sucursal.id}}</td>
+                    <td>{{sucursal.direccion}}</td>
+                    <td>{{sucursal.empleados}}</td>
+                    <td>
+                       <a name="" id="" class="btn btn-danger" href="{% url 'eliminarsucursal' sucursal.id %}" role="button">Borrar</a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+        
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+
+{%endblock%}
